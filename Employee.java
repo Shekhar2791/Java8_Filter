@@ -12,6 +12,7 @@ public class Employee {
 	private Date doj;
 	private char sex;
 	private long mobile;
+	private String department;
 	List<String> email;
 	
 	
@@ -19,7 +20,8 @@ public class Employee {
 		super();
 	}
 
-	public Employee(int id, String name, int age, Double salary, Date doj, char sex, long mobile, List<String> email) {
+	public Employee(int id, String name, int age, Double salary, Date doj, char sex, long mobile, String department,
+			List<String> email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,8 +30,10 @@ public class Employee {
 		this.doj = doj;
 		this.sex = sex;
 		this.mobile = mobile;
+		this.department = department;
 		this.email = email;
 	}
+
 
 
 	public int getId() {
@@ -96,10 +100,18 @@ public class Employee {
 		this.email = email;
 	}
 
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", doj=" + doj
-				+ ", sex=" + sex + ", mobile=" + mobile + ", email=" + email + "]";
+				+ ", sex=" + sex + ", mobile=" + mobile + ", department=" + department + ", email=" + email + "]";
 	}
 
 }

@@ -32,9 +32,9 @@ public class StreamsEx {
 //		
 //		Stream.of(arrayOfEmps[0], arrayOfEmps[1]);
 		//--------------------------------------------------------------------------------
-		List<Employee> arrayOfEmps = Arrays.asList(new Employee(1, "Jeff Bezos",25,10000.0,dojJef,'m', 845462, Arrays.asList("jef@gmail.com,je@gmail.com")),  
-						new Employee(2, "Bill Gates",28, 20000.0,dojBil,'m',84005552, Arrays.asList("bil@gmail.com,bi@gmail.com")), 
-						new Employee(3, "Mark Zuckerberg",33, 30000.0,dojMZ,'f',8487212, Arrays.asList("mark@gmail.com,mk@gmail.com")));
+		List<Employee> arrayOfEmps = Arrays.asList(new Employee(1, "Jeff Bezos",25,10000.0,dojJef,'m', 845462,"IT", Arrays.asList("jef@gmail.com,je@gmail.com")),  
+						new Employee(2, "Bill Gates",28, 20000.0,dojBil,'m',84005552,"Java", Arrays.asList("bil@gmail.com,bi@gmail.com")), 
+						new Employee(3, "Mark Zuckerberg",33, 30000.0,dojMZ,'f',8487212,".net", Arrays.asList("mark@gmail.com,mk@gmail.com")));
 		
 		//1. Employee with max sal
 		Employee maxSal = arrayOfEmps.stream().max((a,b)-> Double.compare(a.getSalary(), b.getSalary())).get();
@@ -56,7 +56,7 @@ public class StreamsEx {
 		max2ndSal.ifPresent(System.out::print);
 		
 		// Get the highest-paid employee in each department
-		Map<String, Optional<Employee>> collect = employeeList.stream()
+		Map<String, Optional<Employee>> collect = arrayOfEmps.stream()
 		        .collect(Collectors.groupingBy(Employee::getDepartment, 
 		        			Collectors.maxBy((employee, t1) -> (int) (t1.getSalary() - employee.getSalary()))));
 		System.out.println("Highest paid employee in each department ");
@@ -88,7 +88,7 @@ public class StreamsEx {
  * 
  * */
 		//Department with highest salary
-		Map.Entry<String, Double> highestAvgSalary = employeeList.stream()
+		Map.Entry<String, Double> highestAvgSalary = arrayOfEmps.stream()
 			    .collect(Collectors.groupingBy(
 			        Employee::getDepartment,
 			        Collectors.averagingDouble(Employee::getSalary)
